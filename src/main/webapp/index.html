@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DIF Alpin Live Timing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+<link rel="stylesheet" href="themes/mobile-timing-theme.css" />
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+<script type="text/javascript" src="js/handlebars-1.0.0.beta.6.js"></script>
+<script type="text/javascript" src="js/ssf-timing-mobile.js"></script>
+</head>
+<body>
+	<div data-role="page" id="mainPage">
+		<div data-role="header">
+			<img src="images/logo.png" class="ui-btn-left" />
+			<h1>DIF Alpin Timing</h1>
+			<a href="#aboutPage" data-rel="dialog" data-icon="info"
+				class="ui-btn-right" data-iconpos="notext">Om</a>
+		</div>
+
+		<div data-role="content">
+			<ul data-role="listview" data-inset="true" id="mainUl">
+			</ul>
+		</div>
+		<div data-role="footer">
+			<h1>&copy; DIF Alpin 2012</h1>
+		</div>
+	</div>
+	<script id="event-template" type="text/x-handlebars-template">
+	{{#each items}}
+	{{#if group}}
+	<li data-role="list-divider">{{group}}</li>
+	{{/if}}
+	{{#if link}}
+	<li class="listUlItem" id="{{link.url}}">
+	<a>{{link.label}}</a>
+	</li>
+	{{/if}}
+	{{/each}}
+	</script>
+
+	<div data-role="page" id="resultPage">
+		<div data-role="header">
+			<a href="#mainPage" data-icon="back" data-direction="reverse"
+				class="ui-btn-left" data-iconpos="notext">Tillbaka</a>
+			<h1 id="resultHeader">Resultat</h1>
+			<a id="refreshButton" data-icon="refresh" class="ui-btn-right"
+				data-iconpos="notext">Ladda Om</a>
+		</div>
+
+		<div data-role="footer" data-theme="e" id="reloadMessage"
+			style="display: none">
+			<h1>Sidan har laddats om</h1>
+		</div>
+
+		<div data-role="content">
+			<ul data-role="listview" data-filter="true"
+				data-filtertext="Filtrera" id="resultUl">
+			</ul>
+		</div>
+	</div>
+	<script id="result-template" type="text/x-handlebars-template">
+	{{#if items.ok}}
+	<li data-role="list-divider">Placerade</li>
+	{{/if}}
+	{{#each items.ok}}
+	<li>
+	<h3>{{place}}. {{name}} ({{number}})</h3>
+	<p>{{club}}</p>
+	<p class="ui-li-aside"><strong>{{time}}</strong> (+{{diff}})</p>
+	</li>
+	{{/each}}
+	{{#if items.fail}}
+	<li data-role="list-divider">Ej placerade</li>
+	{{/if}}
+	{{#each items.fail}}
+	<li>
+	<h3>{{name}} ({{number}})</h3>
+	<p>{{club}}</p>
+	<p class="ui-li-aside"><strong>{{code}}</strong></p>
+	</li>
+	{{/each}}
+	</script>
+
+	<script id="startlist-template" type="text/x-handlebars-template">
+	{{#each items}}
+	<li>
+	<h3>{{number}}. {{name}}</h3>
+	<p>{{club}}</p>
+	{{/each}}
+	</script>
+
+
+	<div data-role="page" id="aboutPage">
+		<div data-role="header">
+			<h1>Om</h1>
+		</div>
+		<div data-role="content">
+			<p>
+				SSF Online Mobilversion <strong>Version 0.1.0</strong>
+			</p>
+			<p>
+				Skicka feedback till <a href="http://twitter.com/#!/lemoms"
+					target="_blank">Fredrik Lindskog</a>
+			</p>
+			<p>
+				Vanliga sajten finns <a href="index.htm" target="_blank">h&auml;r</a>.
+			</p>
+		</div>
+	</div>
+
+</body>
+</html>
