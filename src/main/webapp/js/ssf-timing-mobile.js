@@ -47,6 +47,10 @@ $(document).ready(
 									$('#reloadMessage').fadeOut(5000);
 								});
 					});
+			
+			document.title = Theme.title;
+			$("#header").text(Theme.header);
+			$("#footer").text(Theme.footer);
 		});
 
 $('#mainPage').live('pageinit', function() {
