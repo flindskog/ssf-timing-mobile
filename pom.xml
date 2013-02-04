@@ -28,9 +28,6 @@
 							<goal>single</goal>
 						</goals>
 						<configuration>
-							<filters>
-								<filter>src/main/assembly/filter.properties</filter>
-							</filters>
 							<descriptors>
 								<descriptor>src/main/assembly/default.xml</descriptor>
 								<descriptor>src/main/assembly/difalpin.xml</descriptor>
