@@ -1,6 +1,7 @@
 # SSF Timing Mobile
 
-En mobilsida för att visa liveresultat som [SSF Timing](http://www.skidor.com/sv/SvenskaSkidforbundet/Tavlingsadministration/SSFTiming/) publicerar. Sidan är gjord för att det lätt ska gå att läsa liveresultaten på mobiltelefoner, vilket inte direkt är fallet med den sidan som programmet genererar.
+En mobilsida för att visa liveresultat som [SSF Timing](http://www.skidor.com/sv/SvenskaSkidforbundet/Tavlingsadministration/SSFTiming/) publicerar. 
+Sidan är gjord för att det lätt ska gå att läsa liveresultaten på mobiltelefoner, vilket inte direkt är fallet med den sidan som programmet genererar.
 
 ## Installation
 ### Krav
@@ -14,7 +15,7 @@ En mobilsida för att visa liveresultat som [SSF Timing](http://www.skidor.com/s
 resultaten publiceras
 
 ## Versionshistorik
-* 0.2.0 (2013-01-20) - Bröt ut teman. Befintliga: DIF Alpin & Default.
+* 0.2.0 (2013-02-04) - Bröt ut teman. Befintliga: DIF Alpin & Default.
 * 0.1.0 (2012-03-14) - Första versionen, DIF Alpin
 
 ## Framtida förbättringsförslag

@@ -5,6 +5,10 @@
 	<artifactId>ssf-mobile-timing</artifactId>
 	<version>0.2.0</version>
 	<packaging>pom</packaging>
+	<properties>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
+	</properties>
 	<build>
 		<plugins>
 			<plugin>
@@ -24,6 +28,9 @@
 							<goal>single</goal>
 						</goals>
 						<configuration>
+							<filters>
+								<filter>src/main/assembly/filter.properties</filter>
+							</filters>
 							<descriptors>
 								<descriptor>src/main/assembly/default.xml</descriptor>
 								<descriptor>src/main/assembly/difalpin.xml</descriptor>
