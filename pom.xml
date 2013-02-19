@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>se.pointcut</groupId>
 	<artifactId>ssf-mobile-timing</artifactId>
-	<version>0.2.0</version>
+	<version>0.3.0</version>
 	<packaging>pom</packaging>
 	<properties>
 		<timestamp>${maven.build.timestamp}</timestamp>
@@ -22,14 +22,31 @@
 				<version>2.4</version>
 				<executions>
 					<execution>
-						<id>make-assembly</id>
+						<id>default</id>
 						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 						<configuration>
+					        <filters>
+					            <filter>src/main/assembly/default.properties</filter>
+					        </filters>
 							<descriptors>
 								<descriptor>src/main/assembly/default.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>difalpin</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+					        <filters>
+					            <filter>src/main/assembly/difalpin.properties</filter>
+					        </filters>
+							<descriptors>
 								<descriptor>src/main/assembly/difalpin.xml</descriptor>
 							</descriptors>
 						</configuration>

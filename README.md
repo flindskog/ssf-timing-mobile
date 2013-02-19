@@ -15,8 +15,9 @@ Sidan är gjord för att det lätt ska gå att läsa liveresultaten på mobiltel
 resultaten publiceras
 
 ## Versionshistorik
+* 0.3.0 (2013-02-19) - Visa tider för åk 1 och åk 2 vid visning av totalresultaten.
 * 0.2.0 (2013-02-04) - Bröt ut teman. Befintliga: DIF Alpin & Default.
 * 0.1.0 (2012-03-14) - Första versionen, DIF Alpin
 
 ## Framtida förbättringsförslag
-* Visa tider för åk 1 och åk 2 vid visning av totalresultaten. Nu visas bara totaltiden.
+* Förkompilera handlebars templates för prestandaförbättring.

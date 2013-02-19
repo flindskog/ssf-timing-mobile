@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SSF Live Timing</title>
+<title>${title}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="themes/current/images/favicon.ico" type="image/vnd.microsoft.icon" />
 <link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 <link rel="stylesheet" href="themes/current/theme.css" />
-<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script
-	src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-<script type="text/javascript" src="js/handlebars-1.0.0.beta.6.js"></script>
+	src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+<script type="text/javascript" src="js/handlebars-1.0.0-rc.3.js"></script>
 <script type="text/javascript" src="themes/current/theme.js"></script>
 <script type="text/javascript" src="js/ssf-timing-mobile.js"></script>
 </head>
@@ -20,7 +20,7 @@
 	<div data-role="page" id="mainPage">
 		<div data-role="header">
 			<img id="logo" src="themes/current/images/logo.png" class="ui-btn-left" />
-			<h1 id="header">SSF Live Timing</h1>
+			<h1 id="header">${header}</h1>
 			<a href="#aboutPage" data-rel="dialog" data-icon="info"
 				class="ui-btn-right" data-iconpos="notext">Om</a>
 		</div>
@@ -30,7 +30,7 @@
 			</ul>
 		</div>
 		<div data-role="footer">
-			<h1 id="footer">SSF Live Timing</h1>
+			<h1 id="footer">${footer}</h1>
 		</div>
 	</div>
 	<script id="event-template" type="text/x-handlebars-template">
@@ -49,7 +49,7 @@
 	<div data-role="page" id="resultPage">
 		<div data-role="header">
 			<a href="#mainPage" data-icon="back" data-direction="reverse"
-				class="ui-btn-left" data-iconpos="notext">Tillbaka</a>
+				class="ui-btn-left" data-iconpos="notext" data-transition="slidefade">Tillbaka</a>
 			<h1 id="resultHeader">Resultat</h1>
 			<a id="refreshButton" data-icon="refresh" class="ui-btn-right"
 				data-iconpos="notext">Ladda Om</a>
@@ -72,9 +72,9 @@
 	{{/if}}
 	{{#each items.ok}}
 	<li>
-	<h3>{{place}}. {{name}} ({{number}})</h3>
-	<p>{{club}}</p>
-	<p class="ui-li-aside"><strong>{{time}}</strong> (+{{diff}})</p>
+	<h3>{{place}}. {{name}}</h3>
+	<p>({{number}}) {{club}}</p>
+	<p class="ui-li-aside"><strong>{{time}}</strong> (+{{diff}}){{#if time2}}<br/><br/>{{time1}} / {{time2}}{{/if}}</p>
 	</li>
 	{{/each}}
 	{{#if items.fail}}
@@ -82,8 +82,8 @@
 	{{/if}}
 	{{#each items.fail}}
 	<li>
-	<h3>{{name}} ({{number}})</h3>
-	<p>{{club}}</p>
+	<h3>{{name}}</h3>
+	<p>({{number}}) {{club}}</p>
 	<p class="ui-li-aside"><strong>{{code}}</strong></p>
 	</li>
 	{{/each}}
@@ -96,7 +96,6 @@
 	<p>{{club}}</p>
 	{{/each}}
 	</script>
-
 
 	<div data-role="page" id="aboutPage">
 		<div data-role="header">

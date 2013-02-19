@@ -11,7 +11,8 @@ $.ajaxSetup({
 });
 
 $.mobile.listview.prototype.options.filterPlaceholder = "Filtrera...";
-$.mobile.loadingMessage = "Laddar...";
+$.mobile.loader.prototype.options.text = "Laddar...";
+$.mobile.loader.prototype.options.textVisible = true;
 
 var Global = {
 	selectedResultUrl : null,
@@ -47,10 +48,6 @@ $(document).ready(
 									$('#reloadMessage').fadeOut(5000);
 								});
 					});
-			
-			document.title = Theme.title;
-			$("#header").text(Theme.header);
-			$("#footer").text(Theme.footer);
 		});
 
 $('#mainPage').live('pageinit', function() {
@@ -149,7 +146,27 @@ function getResult(url, header, successCallback) {
 					ul : '#resultUl',
 					template : Global.getTemplate('#startlist-template')
 				});
-			} else {
+			} else if (url.indexOf("finish") != -1) {
+				$('#resultHeader').text("Resultat " + header);
+				var html = $(htmlText);
+				var okTable = html.siblings('table').first();
+				var failTable = html.siblings('table').last();
+
+				var okJson = parseOkTableFinish(okTable);
+				var failJson = parseFailTable(failTable);
+
+				var jsonObj = {
+					ok : okJson,
+					fail : failJson
+				};
+
+				getDataForTemplate({
+					json : jsonObj,
+					ul : '#resultUl',
+					template : Global.getTemplate('#result-template'),
+				});
+			}
+			else {
 				$('#resultHeader').text("Resultat " + header);
 				var html = $(htmlText);
 				var okTable = html.siblings('table').first();
@@ -169,7 +186,9 @@ function getResult(url, header, successCallback) {
 					template : Global.getTemplate('#result-template'),
 				});
 			}
-			$.mobile.changePage($('#resultPage'));
+			$.mobile.changePage($('#resultPage'), {
+				transition: "slidefade"
+			});
 			if (successCallback) {
 				successCallback();
 			}
@@ -192,6 +211,24 @@ function parseOkTable(table) {
 			number : trim($row.find(':nth-child(3)').text()),
 			club : $row.find(':nth-child(4)').text(),
 			time : $row.find(':last-child').prev().text(),
+			diff : $row.find(':last-child').text()
+		};
+	}).get();
+	json.splice(0, 3);
+	return json;
+}
+
+function parseOkTableFinish(table) {
+	var json = table.find("tr").map(function() {
+		var $row = $(this);
+		return {
+			place : $row.find(':nth-child(1)').text(),
+			name : $row.find(':nth-child(2)').text(),
+			number : trim($row.find(':nth-child(3)').text()),
+			club : $row.find(':nth-child(4)').text(),
+			time1 : $row.find(':nth-child(6)').prev().text(),
+			time2 : $row.find(':nth-child(7)').prev().text(),
+			time : $row.find(':nth-child(8)').prev().text(),
 			diff : $row.find(':last-child').text()
 		};
 	}).get();

@@ -1,6 +1,10 @@
 /* 
  * Theme for DIF Alpin
  */
+.ui-header .ui-title { margin-left: 1em; margin-right: 1em; }
+.ui-li-heading { margin-top: 0.3em; }
+.ui-li-aside { width: 35%; }
+
 .ui-bar-a {
 	border: 1px solid #ed1c24 /*{a-bar-border}*/;
 	background: #ed1c24 /*{a-bar-background-color}*/;
